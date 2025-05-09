@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {FaLock} from "react-icons/fa";
 import {authenticateUser} from "../services/Authentication";
+import Alert from "react-bootstrap/Alert";
+import {ALERTS} from "../lib/constants/themes";
+import { TfiFaceSmile } from "react-icons/tfi";
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -23,7 +25,7 @@ const Login = () => {
     <div className="container d-flex justify-content-center align-items-center vh-100 bg-light">
       <div className="card p-4 shadow-lg" style={{width: '400px'}}>
         <h2 className="text-center mb-4">
-          <FaLock className="mr-2"/> Admin Login
+          <TfiFaceSmile className="mr-2"/> Easy Admin v1.0
         </h2>
         <form onSubmit={handleLogin}>
           <div className="mb-3">
@@ -49,10 +51,7 @@ const Login = () => {
             />
           </div>
           <button type="submit" className="btn btn-primary w-100">Login</button>
-          {loginError
-            && <div className="alert alert-danger d-flex align-items-center mt-3" role="alert">
-            <div>Login Error! Please try again.</div>
-          </div>}
+          {loginError && <Alert className='mt-2' variant={ALERTS.DANGER}>Login failed. Please check your credentials</Alert>}
         </form>
       </div>
     </div>

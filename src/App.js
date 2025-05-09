@@ -8,22 +8,21 @@ import Users from "./pages/Users";
 import Dashboard from "./pages/Dashboard";
 import Reports from "./pages/Reports";
 import Login from "./pages/Login";
-import Layout from "./pages/Layout";
+import Layout from './layouts/Layout';
 import BootstrapComponents from "./pages/BootstrapComponents";
 import PageNotFound from "./pages/PageNotFound";
+import Redux from "./pages/Redux";
+import {ToastContainer} from "react-toastify";
 
 const PrivateRoutes = () => {
   const authToken = localStorage.getItem("_token") !== null;
   return authToken ? <Outlet/> : <Navigate to="/" replace/>;
 }
 
-const AnonymousRoutes = () => {
-  const authToken = localStorage.getItem("_token") != null;
-  return authToken ? <Navigate to="/" replace/> : <Outlet/>;
-}
-
 function App() {
   return (
+    <>
+      <ToastContainer />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login/>}/>
@@ -32,22 +31,22 @@ function App() {
         <Route element={<PrivateRoutes />}>
           <Route element={<Layout />}>
             <Route path="dashboard" element={<Dashboard/>}/>
-            <Route path="users" element={<Users/>}/>
+            <Route path="tables" element={<Users/>}/>
             <Route path="reports" element={<Reports/>}/>
             <Route path="settings" element={<Settings/>}/>
             <Route path="profile" element={<Profile/>}/>
+            <Route path="redux" element={<Redux/>}/>
             <Route path="bootrap-components" element={<BootstrapComponents/>}/>
           </Route>
         </Route>
         {/* End of protected route */}
 
         {/* Catch-all route must come last */}
-        <Route element={<Layout />}>
           <Route path="*" element={<PageNotFound />} />
-        </Route>
 
       </Routes>
     </BrowserRouter>
+      </>
   );
 }
 

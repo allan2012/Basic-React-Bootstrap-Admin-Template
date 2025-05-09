@@ -4,12 +4,11 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import {Badge, Breadcrumb, Dropdown, ListGroup, Placeholder} from "react-bootstrap";
+import {Badge, Breadcrumb, Col, Dropdown, ListGroup, Placeholder, Row} from "react-bootstrap";
 
 const BootstrapComponents = () => {
 
   const [collapse, setCollapse] = useState(true);
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,8 +23,8 @@ const BootstrapComponents = () => {
     <h3>Bootstrap Components</h3>
     <p>Bootstrap features that the template supports</p>
 
-    <div className="row mt-5">
-      <div className="col-md-4">
+    <Row className="row mt-5">
+      <Col md={3}>
         <h3>Toggle Collapse</h3>
         <p>
           <button className="btn btn-primary" type="button" data-bs-toggle="collapse"
@@ -42,16 +41,16 @@ const BootstrapComponents = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Col>
 
-      <div className="col-md-4">
+      <Col md={3}>
         <h3>Spinners</h3>
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
-      </div>
+      </Col>
 
-      <div className="col-md-4">
+      <Col md={3}>
         <h3>Modals</h3>
         <div
           className="modal show"
@@ -76,10 +75,14 @@ const BootstrapComponents = () => {
             </Modal.Footer>
           </Modal>
         </div>
-      </div>
-    </div>
-    <div className="row">
-      <div className="col-md-4">
+      </Col>
+      <Col md={3}>
+        <h3>Toasts</h3>
+
+      </Col>
+    </Row>
+    <Row>
+      <Col md={4}>
         <h3>Alerts</h3>
         {[
           'primary',
@@ -95,8 +98,8 @@ const BootstrapComponents = () => {
             This is a {variant} alert—check it out!
           </Alert>
         ))}
-      </div>
-      <div className="col-md-4">
+      </Col>
+      <Col md={4}>
         <h3>Progress Bars</h3>
         <ProgressBar now={60} />
 
@@ -121,8 +124,8 @@ const BootstrapComponents = () => {
             <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-      </div>
-      <div className="col-md-4">
+      </Col>
+      <Col md={4}>
         <h3>Placeholders</h3>
         <p aria-hidden="true">
           <Placeholder xs={6} />
@@ -160,8 +163,8 @@ const BootstrapComponents = () => {
             Example heading <Badge bg="secondary">New</Badge>
           </h6>
         </div>
-      </div>
-    </div>
+      </Col>
+    </Row>
   </div>)
 }
 
